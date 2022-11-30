@@ -1,32 +1,23 @@
-include "lists.h"
+#ifndef LISTS_H
+#define LISTS_H
+
+#include <stdlib.h>
 
 /**
- * check_cycle - checks if listint_t list loops on itself
- *
- * @list: list to check for loops
- *
- * Return: 1 if loops, 0 if not
- */
-int check_cycle(listint_t *list)
+* struct listint_s - singly linked list
+* @n: integer
+* @next: points to the next node
+* Description: singly linked list node structure
+* for Holberton project
+*/
+typedef struct listint_s
 {
-	listint_t *ptr, *end;
+	int n;
+	struct listint_s *next;
+} listint_t;
+size_t print_listint(const listint_t *h);
+listint_t *add_nodeint(listint_t **head, const int n);
+void free_listint(listint_t *head);
+int check_cycle(listint_t *list);
 
-	if (list == NULL)
-		return (0);
-	ptr = list;
-	end = ptr->next;
-	if (end == NULL)
-		return (0);
-	while (1)
-	{
-		if (end == ptr)
-			return (1);
-		end = end->next;
-		if (end == NULL)
-			return (0);
-		end = end->next;
-		if (end == NULL)
-			return (0);
-		ptr = ptr->next;
-	}
-}
+#endif /* LISTS_H */
