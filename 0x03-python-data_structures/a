@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# positional.sh
+# This script adds commits and pushem
+
+
+POSPAR1="$1"
+chmod u+x $1
+git add .
+git commit -m "$1"
+git push
