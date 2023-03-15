@@ -1,1 +1,1 @@
-ALX 0x12-javascript-warm_up
+## ALX This directory contains solutions to practice problems I did while learning javascript

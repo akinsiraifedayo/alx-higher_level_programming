@@ -1,13 +1,8 @@
 #!/usr/bin/node
-
-const { argv } = require('process');
-const args = argv.slice(2);
-let result = 0;
-let finalArray = [];
-
-if (args.length > 1) {
-  finalArray = [...new Set(args.map((e) => parseInt(e)).sort((a, b) => b - a))];
-  result = finalArray.length > 1 ? finalArray[1] : finalArray[0];
+const num = process.argv.slice(2).sort((a, b) => b - a)[1];
+// second largest is the number at index 1 in the array
+if (num) {
+  console.log(num);
+} else {
+  console.log(0);
 }
-
-console.log(result);

@@ -1,11 +1,14 @@
 #!/usr/bin/node
-
-const { argv } = require('process');
-const size = parseInt(argv[2]);
-
-const printSquare = (size) => {
-  const row = 'X'.repeat(size);
-  for (let i = 0; i < size; i++) console.log(row);
-};
-
-Number.isInteger(size) ? printSquare(size) : console.log('Missing size');
+const arg = parseInt(process.argv[2]);
+if (!arg) {
+  console.log('Missing size');
+} else {
+  for (let i = 0; i < arg; i++) {
+    console.log('X'.repeat(arg));
+  }
+/* ALTERNATE SOLUTION
+  let i = arg;
+  while (i-- > 0) {
+    console.log('X'.repeat(arg));
+  } */
+}
