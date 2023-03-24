@@ -1,23 +1,16 @@
 #!/usr/bin/python3
-"""
-script that takes in an argument and displays all values
-in the states table of hbtn_0e_0_usa
-where name matches the argument.
-This script should take 3 arguments:
-mysql username, mysql password,
-database name and state name searched
-"""
-from sys import argv as av
+# Displays all values in the states table of the database hbtn_0e_0_usa
+# whose name matches that supplied as argument.
+# Safe from SQL injections.
+# Usage: ./3-my_safe_filter_states.py <mysql username> \
+#                                     <mysql password> \
+#                                     <database name> \
+#                                     <state name searched>
+import sys
 import MySQLdb
 
-if __name__ == '__main__':
-    st_name = av[4]
-    db = MySQLdb.connect("localhost", *av[1:4], 3306)
-    cursor = db.cursor()
-    cursor.execute("SELECT * FROM states WHERE \
-name LIKE BINARY %s", (st_name,))
-    rows = cursor.fetchall()
-    for row in rows:
-        print(row)
-    cursor.close()
-    db.close()
+if __name__ == "__main__":
+    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3])
+    c = db.cursor()
+    c.execute("SELECT * FROM `states`")
+    [print(state) for state in c.fetchall() if state[1] == sys.argv[4]]
