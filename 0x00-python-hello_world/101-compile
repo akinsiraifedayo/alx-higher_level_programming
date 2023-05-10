@@ -1,5 +1,4 @@
 #!/bin/bash
-
 filename="$PYFILE"
 output_filename="$(basename "${filename%.*}.pyc")"
 python3 -m compileall "$filename"
