@@ -13,4 +13,4 @@ elif (last_digit == 0):
 elif ((last_digit < 6) & (last_digit != 0)):
 	statement = "and is less than 6 and not 0"
 
-print(f"The last digit of {number} is {last_digit} {statement}")
+print(f"Last digit of {number} is {last_digit} {statement}")
