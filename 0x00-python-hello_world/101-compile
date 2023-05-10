@@ -1,7 +1,2 @@
 #!/bin/bash
-filename="$PYFILE"
-output_filename="$(basename "${filename%.*}.pyc")"
-python3 -m compileall "$filename"
-mv "$(dirname "$filename")/${output_filename}" "${PWD}/${output_filename}"
-echo "Compilation complete. Output file: ${PWD}/${output_filename}"
-
+python3 -m compileall -b "$PYFILE"
